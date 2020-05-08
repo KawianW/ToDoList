@@ -2,9 +2,9 @@
 
 require __DIR__ . '/php/connect.php';
 
-$stmt = $conn->prepare("SELECT * FROM 'lists");
-$stmt = $conn->excecute();
-$result = $stmt->fetchll();
+// $stmt = $conn->prepare("SELECT * FROM 'lists");
+// $stmt = $conn->excecute();
+// $result = $stmt->fetchll();
 ?>
 
 <!DOCTYPE html>
@@ -22,10 +22,10 @@ $result = $stmt->fetchll();
 
     <tbody>
 
-		<?php 
+		<!-- <?php 
 
 			foreach ($result as $row ) {
-		?>		
+		?>		 -->
 
 		<tr>
 			<td><?php echo $row['task_id'];?></td>
@@ -48,5 +48,5 @@ $result = $stmt->fetchll();
 </html>
 
 <?php 
-	$conn = null
+	$dbconn = null
  ?>
