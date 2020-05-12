@@ -1,5 +1,5 @@
 <?php
-require __DIR__ . '/php/connect.php';
+require __DIR__ . '/include/connect.php';
 
 $stmt = $dbconn->prepare("SELECT * FROM `Tasks`");
 $stmt->execute();
@@ -39,9 +39,8 @@ $result = $stmt->fetchAll();
 			<td><?php echo $row['task_name'];?></td>
 			<td><?php echo $row['task_status'];?></td>
 			<td><?php echo $row['task_time'];?></td>
-			<td><a class="btn btn-info" href="uitleg.php?id=<?php echo $row['list_id']?>"><i class="fas fa-info"></i></a></td>
 			<td><a class="btn btn-danger" onclick="return isValid()" href="Delete-task.php?id=<?php echo $row['list_id']?>"><i class="fas fa-dumpster"></i></a></td>
-			<td><a class="btn btn-warning"  href="edit-task.php?id=<?php echo $row['list_id']?>"><i class="fas fa-edit"></i></a></td>
+			<td><a class="btn btn-warning"  href="edit-task.php?id=<?php echo $row['task_id']?>"><i class="fas fa-edit"></i></a></td>
 		</tr>
         <?php 
             }
