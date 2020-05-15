@@ -16,44 +16,45 @@ $result = $stmt->fetchAll();
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 </head>
-<body>
+<body style='background-color: #343a40'>
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Task ID</th>
-      <th scope="col">List ID</th>
-	  <th scope="col">Task name</th>
-	  <th scope="col">Task status</th>
-	  <th scope="col">Task time</th>
-	  <th scope="col">Delete Task</th>
-	  <th scope="col">Edit Task</th>
-    </tr>
-  </thead>		
-	<tbody>
+<div class="container">
+	<table class="table table-dark">
+	<thead>
 		<tr>
-
-		<?php 
-
-			foreach ($result as $row ) {
-		?>
-
-			<td><?php echo $row['task_id'];?></td>
-			<td><?php echo $row['list_id'];?></td>
-			<td><?php echo $row['task_name'];?></td>
-			<td><?php echo $row['task_status'];?></td>
-			<td><?php echo $row['task_time'];?></td>
-			<td><a class="btn btn-danger" onclick="return isValid()" href="Delete-task.php?id=<?php echo $row['list_id']?>"><i class="fas fa-dumpster"></i></a></td>
-			<td><a class="btn btn-warning"  href="edit-task.php?id=<?php echo $row['task_id']?>"><i class="fas fa-edit"></i></a></td>
+		<th scope="col">Task ID</th>
+		<th scope="col">List ID</th>
+		<th scope="col">Task name</th>
+		<th scope="col">Task status</th>
+		<th scope="col">Task time</th>
+		<th scope="col">Delete Task</th>
+		<th scope="col">Edit Task</th>
 		</tr>
-        <?php 
-            }
-        ?>
-	</tbody>     
-</table>
+	</thead>		
+		<tbody>
+			<tr>
 
-			<button type="button" class="btn btn-light createBtn" href="create-task.php">+ Voeg een taak toe</button>
-    
+			<?php 
+
+				foreach ($result as $row ) {
+			?>
+
+				<td><?php echo $row['task_id'];?></td>
+				<td><?php echo $row['list_id'];?></td>
+				<td><?php echo $row['task_name'];?></td>
+				<td><?php echo $row['task_status'];?></td>
+				<td><?php echo $row['task_time'];?></td>
+				<td><a class="btn btn-danger" onclick="return isValid()" href="taak/delete-task.php?task_id=<?php echo $row['list_id']?>"><i class="fas fa-dumpster"></i></a></td>
+				<td><a class="btn btn-warning"  href="taak/edit-task.php?task_id=<?php echo $row['task_id']?>"><i class="fas fa-edit"></i></a></td>
+			</tr>
+			<?php 
+				}
+			?>
+		</tbody>     
+	</table>
+
+	<a class="btn btn-light createBtn" href="taak/create-task.php">+ Voeg een taak toe</a>
+</div>  
 </body>
 </html>
 
