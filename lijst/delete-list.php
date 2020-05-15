@@ -2,12 +2,13 @@
 
 $list_id = $_GET['list_id'];
 
-include '../include/connect.php';
+require '../include/connect.php';
 
 $query = $dbconn->prepare("DELETE FROM `Lists` WHERE list_id = :list_id");
-$query->bindParam(":list_id" , $list_id);
+$query->bindParam(":list_id" , $list_id,PDO::PARAM_INT);
 $query->execute();
-var_dump($query);
+
+$dbconn = null;
 
 header('location: ../list-index.php');
 ?>

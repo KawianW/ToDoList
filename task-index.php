@@ -21,9 +21,13 @@ $result = $stmt->fetchAll();
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Task name</th>
-      <th scope="col">Task status</th>
-      <th scope="col">Task time</th>
+      <th scope="col">Task ID</th>
+      <th scope="col">List ID</th>
+	  <th scope="col">Task name</th>
+	  <th scope="col">Task status</th>
+	  <th scope="col">Task time</th>
+	  <th scope="col">Delete Task</th>
+	  <th scope="col">Edit Task</th>
     </tr>
   </thead>		
 	<tbody>
