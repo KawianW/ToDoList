@@ -32,6 +32,8 @@
                     <option>Afgemaakt</option>
                 </select>
             </div>
+            <input type="hidden" name="task_id" value="<?php echo $result['task_id'] ?>">
+            <input type="hidden" name="list_id" value="<?php echo $result['list_id'] ?>">
             <button type="submit" class="btn btn-primary">Aanpassingen toevoegen</button>
         </form>
     </div>

@@ -2,6 +2,13 @@
 require "../include/connect.php";
 include "../include/getLists.php";
 
+
+$query = $dbconn->prepare("SELECT * FROM Tasks WHERE task_id=:task_id");
+$query->bindParam(':task_id', $_GET['id'], PDO::PARAM_INT);
+$query->execute();
+
+$result = $query->fetch();
+
 $list_id = $_GET['list_id'];
 
 $task_id = $_GET['task_id'];
