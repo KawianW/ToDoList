@@ -1,9 +1,9 @@
 <?php
 require __DIR__ . '/include/connect.php';
 
-$stmt = $dbconn->prepare("SELECT * FROM `Tasks`");
-$stmt->execute();
-$result = $stmt->fetchAll();
+$query = $dbconn->prepare("SELECT * FROM `Tasks`");
+$query->execute();
+$result = $query->fetchAll();
 ?>
 
 <!DOCTYPE html>
@@ -22,8 +22,6 @@ $result = $stmt->fetchAll();
 	<table class="table table-dark">
 	<thead>
 		<tr>
-		<th scope="col">Task ID</th>
-		<th scope="col">List ID</th>
 		<th scope="col">Task name</th>
 		<th scope="col">Task status</th>
 		<th scope="col">Task time</th>
@@ -38,13 +36,10 @@ $result = $stmt->fetchAll();
 
 				foreach ($result as $row ) {
 			?>
-
-				<td><?php echo $row['task_id'];?></td>
-				<td><?php echo $row['list_id'];?></td>
 				<td><?php echo $row['task_name'];?></td>
 				<td><?php echo $row['task_status'];?></td>
 				<td><?php echo $row['task_time'];?></td>
-				<td><a class="btn btn-danger" onclick="return isValid()" href="taak/delete-task.php?task_id=<?php echo $row['list_id']?>"><i class="fas fa-dumpster"></i></a></td>
+				<td><a class="btn btn-danger" onclick="return isValid()" href="taak/delete-task.php?task_id=<?php echo $row['task_id']?>"><i class="fas fa-dumpster"></i></a></td>
 				<td><a class="btn btn-warning"  href="taak/edit-task.php?task_id=<?php echo $row['task_id']?>"><i class="fas fa-edit"></i></a></td>
 			</tr>
 			<?php 
