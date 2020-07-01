@@ -4,7 +4,7 @@
     $task_id = $_GET['task_id'];
 
 
-    $query = $dbconn->prepare("SELECT * FROM Tasks WHERE task_id = :task_id");
+    $query = $dbconn->prepare("SELECT * FROM `Tasks` WHERE task_id = :task_id");
     $query->bindParam(":task_id" , $task_id,PDO::PARAM_INT);
     $query->execute();
     $result = $query->fetch();

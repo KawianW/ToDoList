@@ -1,9 +1,13 @@
 <?php
 require __DIR__ . '/include/connect.php';
-
-$query = $dbconn->prepare("SELECT * FROM `Tasks`");
+$list_id = $_GET['id'];
+$query = $dbconn->prepare("SELECT * FROM `Tasks` WHERE list_id = :list_id");
+$query->bindParam(":list_id" , $list_id,PDO::PARAM_INT);
 $query->execute();
 $result = $query->fetchAll();
+
+include "include/header.php";
+include "include/navbar.php";
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +38,7 @@ $result = $query->fetchAll();
 
 			<?php 
 
-				foreach ($result as $row ) {
+				foreach ($result as $row) {
 			?>
 				<td><?php echo $row['task_name'];?></td>
 				<td><?php echo $row['task_status'];?></td>
@@ -48,10 +52,20 @@ $result = $query->fetchAll();
 		</tbody>     
 	</table>
 
-	<a class="btn btn-light createBtn" href="taak/create-task.php">+ Voeg een taak toe</a>
+	<a class="btn btn-light createBtn" href="taak/create-task.php?list_id=<?php echo $list_id?>">+ Voeg een taak toe</a>
 </div>  
 </body>
 </html>
+
+<script type="text/javascript">
+	function isValid(){
+		if(!confirm("weet u zeker dat u dit spel wilt verwijderen?")){
+			return false;
+		}
+		return true;
+	}
+</script>
+
 
 <?php 
 	$dbconn = null

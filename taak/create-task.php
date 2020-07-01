@@ -1,12 +1,13 @@
 <?php
 include "../include/header.php";
+$list_id = $_GET['list_id'];
 ?>
 
 <!-- this is the form you are seeing when you want to create the task -->
 <body style='background-color: #343a40'>
     <div class="container">
         <h1 style="color: #ffffff">Taak toevoegen aan lijst "<?php echo $result['list_name'] ?>"</h1>
-        <form action="creating-task.php" method="POST">
+        <form action="creating-task.php?list_id=<?php echo $list_id?>" method="POST">
             <input type="hidden" id="list_id" name="list_id" value="<?php echo $result['list_id'] ?>">
             <div class="form-group">
                 <label style="color: #ffffff" for="task_name">Taak beschrijving: </label>
